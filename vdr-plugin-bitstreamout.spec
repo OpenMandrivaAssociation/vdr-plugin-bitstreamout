@@ -12,7 +12,7 @@ Group:		Video
 License:	GPL
 URL:		http://bitstreamout.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/bitstreamout/vdr-%plugin-%version.tar.bz2
-Patch0:		vdr-bitstreamout-glibc-23935.patch
+Patch0:		bitstreamout-glibc-no-bitops.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 BuildRequires:	mad-devel
@@ -32,7 +32,7 @@ description read the file Description.
 %prep
 %setup -q -c
 cd %plugin
-%patch0 -p0
+%patch0 -p1
 
 %vdr_plugin_params_begin %plugin
 # enable a control entry in the main menu
@@ -42,12 +42,6 @@ param=--onoff
 var=SCRIPT
 param=--mute=SCRIPT
 %vdr_plugin_params_end
-
-# For patch0
-touch cooker-workaround.h
-%if %mdkversion >= 200700
-echo '#include <asm-generic/bitops/fls.h>' > cooker-workaround.h
-%endif
 
 %build
 cd %plugin
