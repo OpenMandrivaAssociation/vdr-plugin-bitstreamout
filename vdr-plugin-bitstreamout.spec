@@ -13,6 +13,7 @@ License:	GPL
 URL:		http://bitstreamout.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/bitstreamout/vdr-%plugin-%version.tar.bz2
 Patch0:		bitstreamout-glibc-no-bitops.patch
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 BuildRequires:	mad-devel
 BuildRequires:	libalsa-devel
