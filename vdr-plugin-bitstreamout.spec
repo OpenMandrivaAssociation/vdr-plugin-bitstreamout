@@ -2,7 +2,7 @@
 %define plugin	bitstreamout
 %define name	vdr-plugin-%plugin
 %define version	0.85
-%define rel	16
+%define rel	17
 
 Summary:	VDR plugin: bit stream out to S/P-DIF of a sound card
 Name:		%name
