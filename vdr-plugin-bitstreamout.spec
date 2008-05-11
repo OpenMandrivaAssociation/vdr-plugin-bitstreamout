@@ -1,8 +1,8 @@
 
 %define plugin	bitstreamout
 %define name	vdr-plugin-%plugin
-%define version	0.85
-%define rel	19
+%define version	0.89b
+%define rel	1
 
 Summary:	VDR plugin: bit stream out to S/P-DIF of a sound card
 Name:		%name
@@ -12,9 +12,6 @@ Group:		Video
 License:	GPL
 URL:		http://bitstreamout.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/bitstreamout/vdr-%plugin-%version.tar.bz2
-Patch0:		bitstreamout-glibc-no-bitops.patch
-Patch1:		bitstreamout-02_fix-nostrip.dpatch
-Patch2:		91_bitstreamout-0.85-1.5.0.dpatch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	mad-devel
@@ -34,9 +31,9 @@ description read the file Description.
 %prep
 %setup -q -c
 cd %plugin
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+# fix build
+sed -i 's,error No,warning No,' Makefile
+
 %vdr_plugin_prep
 
 %vdr_plugin_params_begin %plugin
@@ -50,7 +47,8 @@ param=--mute=SCRIPT
 
 %build
 cd %plugin
-%vdr_plugin_build
+# messed up variables in Makefile:
+%vdr_plugin_build PLUGINLIBDIR=.
 
 %install
 rm -rf %{buildroot}
@@ -72,9 +70,8 @@ rm -rf %{buildroot}
 
 %files -f %plugin/%plugin.vdr
 %defattr(-,root,root)
-%doc %plugin/AUTHORS %plugin/ChangeLog %plugin/COPYING %plugin/Description
+%doc %plugin/AUTHORS %plugin/ChangeLog %plugin/Description
 %doc %plugin/INSTALL %plugin/PROBLEMS %plugin/README
 %doc %plugin/tools %plugin/doc %plugin/mute
 %{_mandir}/man5/vdr-bitstreamout.5*
-
 
