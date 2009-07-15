@@ -1,8 +1,8 @@
 
 %define plugin	bitstreamout
 %define name	vdr-plugin-%plugin
-%define version	0.89b
-%define rel	2
+%define version	0.89c
+%define rel	1
 
 Summary:	VDR plugin: bit stream out to S/P-DIF of a sound card
 Name:		%name
@@ -32,7 +32,7 @@ description read the file Description.
 %setup -q -c
 cd %plugin
 # fix build
-sed -i 's,error No,warning No,' Makefile
+sed -i 's,error No VDR,warning No VDR,' Makefile
 
 %vdr_plugin_prep
 
