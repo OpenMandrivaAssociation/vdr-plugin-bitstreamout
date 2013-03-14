@@ -1,15 +1,11 @@
-
 %define plugin	bitstreamout
-%define name	vdr-plugin-%plugin
-%define version	0.89c
-%define rel	3
 
 %define debug_package %{nil}
 
 Summary:	VDR plugin: bit stream out to S/P-DIF of a sound card
-Name:		%name
-Version:	%version
-Release:	%mkrel %rel
+Name:		vdr-plugin-%plugin
+Version:	0.89c
+Release:	4
 Group:		Video
 License:	GPL
 URL:		http://bitstreamout.sourceforge.net/
@@ -52,22 +48,15 @@ cd %plugin
 %vdr_plugin_build PLUGINLIBDIR=.
 
 %install
-rm -rf %{buildroot}
 cd %plugin
 %vdr_plugin_install
 
 install -d -m755 %{buildroot}/%{_mandir}/man5
 install -m644 vdr-bitstreamout.5* %{buildroot}/%{_mandir}/man5
 
-%clean
-rm -rf %{buildroot}
-
 %post
 %{_bindir}/gpasswd -a vdr audio >/dev/null
-%vdr_plugin_post %plugin
 
-%postun
-%vdr_plugin_postun %plugin
 
 %files -f %plugin/%plugin.vdr
 %defattr(-,root,root)
