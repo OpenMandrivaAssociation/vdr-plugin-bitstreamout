@@ -5,7 +5,7 @@
 Summary:	VDR plugin: bit stream out to S/P-DIF of a sound card
 Name:		vdr-plugin-%plugin
 Version:	0.89c
-Release:	5
+Release:	6
 Group:		Video
 License:	GPL
 URL:		http://bitstreamout.sourceforge.net/
