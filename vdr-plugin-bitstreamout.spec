@@ -8,7 +8,7 @@ Version:	0.89c
 Release:	6
 Group:		Video
 License:	GPL
-URL:		http://bitstreamout.sourceforge.net/
+URL:		https://bitstreamout.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/bitstreamout/vdr-%plugin-%version.tar.bz2
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	mad-devel
